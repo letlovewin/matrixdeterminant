@@ -1,3 +1,9 @@
+'''
+Essentially, getting the determinant of any matrix over the size of 2x2 is a recursive operation, wherein you take the topmost row,
+and iterate through each of its values, eliminating the element's respective column and row, and then multiplying the remaining
+matrix by that value and getting the determinant of the resulting matrix.
+'''
+
 def determinant(matrix):
     if len(matrix[0])==1:
         return matrix[0][0]
@@ -10,10 +16,9 @@ def determinant(matrix):
             y = []
             p = None
             for j in range(1,len(matrix)): #Takes our minors
-                if j < len(matrix):
-                    p = matrix[j].copy() 
-                    p.pop(i) #If the number is in the same row/column as our first column number, pop it out
-                    y.append(p)
+                p = matrix[j].copy() 
+                p.pop(i) #If the number is in the same row/column as our first column number, pop it out
+                y.append(p)
             if i%2 != 0: #Determinant adding operation
                 c -= determinant(y)*matrix[0][i] 
             else:
